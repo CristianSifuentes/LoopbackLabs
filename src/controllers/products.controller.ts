@@ -4,17 +4,21 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
+  del, get,
+  getModelSchemaRef, param,
+
+
+  patch, post,
+
+
+
+
   put,
-  del,
-  requestBody,
+
+  requestBody
 } from '@loopback/rest';
 import {Products} from '../models';
 import {ProductsRepository} from '../repositories';
@@ -22,7 +26,7 @@ import {ProductsRepository} from '../repositories';
 export class ProductsController {
   constructor(
     @repository(ProductsRepository)
-    public productsRepository : ProductsRepository,
+    public productsRepository: ProductsRepository,
   ) {}
 
   @post('/products', {
@@ -119,7 +123,7 @@ export class ProductsController {
     },
   })
   async findById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @param.filter(Products, {exclude: 'where'}) filter?: FilterExcludingWhere<Products>
   ): Promise<Products> {
     return this.productsRepository.findById(id, filter);
@@ -133,7 +137,7 @@ export class ProductsController {
     },
   })
   async updateById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody({
       content: {
         'application/json': {
@@ -154,7 +158,7 @@ export class ProductsController {
     },
   })
   async replaceById(
-    @param.path.number('id') id: number,
+    @param.path.string('id') id: string,
     @requestBody() products: Products,
   ): Promise<void> {
     await this.productsRepository.replaceById(id, products);
@@ -167,7 +171,7 @@ export class ProductsController {
       },
     },
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
+  async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.productsRepository.deleteById(id);
   }
 }
