@@ -65,6 +65,15 @@ npm run lint:fix
 - `npm run docker:build`: Build a Docker image for this application
 - `npm run docker:run`: Run this application inside a Docker container
 
+## Loopback commands
+
+- `npm install -g @loopback/cli` : Intalle loopback framework globaly
+- `lb4 app`: Generate new loopback app
+- `lb4 controller`: Generate new controller into loopback app
+- `lb4 repository` : Generate new repository into loopback app
+- `lb4 model` : Generate new model into loopback app
+- `lb4 datasource` : Generate new datasource into loopback app for contect with a database
+
 ## Tests
 
 ```sh
